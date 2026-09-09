@@ -405,7 +405,7 @@
      SCROLL REVEAL — jen pro sekce se [data-reveal]
      (Jak to funguje, Protokol o sestavení a diagnostice)
   ============================================================= */
-  const revealTargets = document.querySelectorAll("[data-reveal]");
+const revealTargets = document.querySelectorAll("[data-reveal]");
   if (revealTargets.length && "IntersectionObserver" in window) {
     const revealObserver = new IntersectionObserver(
       (entries) => {
@@ -421,5 +421,25 @@
     revealTargets.forEach((el) => revealObserver.observe(el));
   } else {
     revealTargets.forEach((el) => el.classList.add("in-view"));
+  }
+
+  // Kopírování e-mailu do schránky
+  const emailBtn = document.getElementById('copyEmailLink');
+
+  if (emailBtn) {
+    emailBtn.addEventListener('click', function () {
+      const email = 'vexver.builds@gmail.com';
+
+      navigator.clipboard.writeText(email).then(() => {
+        const originalText = emailBtn.textContent;
+        emailBtn.textContent = 'Zkopírováno! ✓';
+
+        setTimeout(() => {
+          emailBtn.textContent = originalText;
+        }, 2000);
+      }).catch(err => {
+        console.error('Chyba při kopírování: ', err);
+      });
+    });
   }
 })();
