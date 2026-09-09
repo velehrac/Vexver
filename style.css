@@ -1043,3 +1043,14 @@ h1, h2, h3, .brand__name, .hero__brand {
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* Oprava vzhledu tlačítka pro kopírování e-mailu */
+#copyEmailLink {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+}
